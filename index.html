@@ -11,24 +11,23 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
         body {
-            background-color: #f8f9fa;
-            color: #333;
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
         }
 
-        /* Colors from the business card */
+        /* Colors */
         :root {
             --navy-blue: #0e1351;
             --white: #ffffff;
-            --black: #000000;
-            --accent: #0e1351;
-            --light-gray: #f5f5f5;
+            --accent: #3f51b5;
         }
 
         .container {
@@ -37,37 +36,74 @@
             padding: 0 20px;
         }
 
-        /* Header styles */
-        header {
-            background: var(--navy-blue);
-            color: var(--white);
-            padding: 3rem 0;
+        section {
+            padding: 70px 0;
         }
 
-        .header-content {
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-item {
+            width: 45px;
+            height: 45px;
+            background: var(--navy-blue);
+            border-radius: 50%;
+            display: flex;
             align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .nav-item:hover {
+            transform: scale(1.1);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+        }
+
+        /* Header styles */
+        .hero {
+            background: var(--navy-blue);
+            color: var(--white);
+            padding: 120px 0 80px;
             text-align: center;
         }
 
-        .founder-info {
-            margin-bottom: 2rem;
-        }
-
         .founder-info h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
-            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         .founder-info h2 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-top: 1rem;
             font-weight: 300;
-            letter-spacing: 1.5px;
         }
 
         .contact-info {
@@ -86,7 +122,6 @@
 
         .contact-item i {
             margin-right: 0.5rem;
-            font-size: 1.2rem;
         }
 
         .social-links {
@@ -102,8 +137,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: var(--white);
             transition: all 0.3s ease;
@@ -112,39 +146,64 @@
         .social-links a:hover {
             background-color: var(--white);
             color: var(--navy-blue);
-            border-color: var(--white);
         }
 
-        /* Main content styles */
-        main {
-            padding: 4rem 0;
+        .scroll-down {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+
+        /* Services & Impact Section */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--navy-blue);
+            display: inline-block;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent);
         }
 
         .cards-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 30px;
             justify-content: center;
         }
 
         .card {
             flex: 1;
             min-width: 300px;
-            max-width: 500px;
-            border-radius: 8px;
+            max-width: 480px;
+            border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            height: 100%;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
+            transform: translateY(-10px);
         }
 
         .card-header {
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
         }
 
@@ -161,45 +220,24 @@
         }
 
         .card-body {
-            padding: 2rem;
-        }
-
-        .services .card-body {
-            background-color: var(--white);
-            color: #333;
-        }
-
-        .impact .card-body {
-            background-color: #f8f9fa;
-            color: #333;
+            padding: 1.5rem;
         }
 
         .card h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .card h2:after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background-color: currentColor;
-            margin: 10px auto 0;
         }
 
         .card-list {
             list-style: none;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .card-list li {
-            margin: 1.2rem 0;
+            margin: 1rem 0;
             position: relative;
-            padding-left: 1.8rem;
+            padding-left: 1.5rem;
             font-size: 1.1rem;
         }
 
@@ -209,38 +247,40 @@
             left: 0;
             font-weight: bold;
             color: var(--accent);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
         }
 
         .website-link {
             display: block;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             text-align: center;
             color: var(--navy-blue);
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s ease;
             padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            background-color: transparent;
-            border: 2px solid var(--navy-blue);
+            border-radius: 30px;
+            background-color: #f0f2f5;
         }
 
         .impact .website-link {
             background-color: var(--navy-blue);
             color: var(--white);
-            border-color: var(--navy-blue);
         }
 
         .website-link:hover {
-            background-color: var(--navy-blue);
-            color: var(--white);
-        }
-        
-        .impact .website-link:hover {
-            background-color: transparent;
-            color: var(--navy-blue);
-            border-color: var(--navy-blue);
+            transform: scale(1.05);
         }
 
         .website-link i {
@@ -255,47 +295,94 @@
         }
 
         .logo {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             position: relative;
             margin: 0 1rem;
+            transition: transform 0.5s;
         }
 
-        .logo svg {
-            width: 100%;
-            height: 100%;
+        .logo:hover {
+            transform: rotateY(180deg);
         }
 
         .logo-text {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: bold;
             text-align: center;
             margin-top: 0.5rem;
-            letter-spacing: 1px;
+        }
+
+        /* Achievements Section */
+        .achievements {
+            background: #eaeff5;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .achievements-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .achievement-item {
+            flex: 1;
+            min-width: 180px;
+            max-width: 220px;
+            background: var(--white);
+            padding: 25px 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .achievement-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .achievement-number {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--navy-blue);
+        }
+
+        .achievement-title {
+            font-size: 15px;
+            color: #555;
         }
 
         /* Footer styles */
         footer {
             background: var(--navy-blue);
             color: var(--white);
-            padding: 3rem 0;
+            padding: 60px 0 30px;
         }
 
         .footer-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            gap: 2rem;
+            gap: 30px;
         }
 
         .footer-section {
             flex: 1;
-            min-width: 250px;
+            min-width: 220px;
         }
 
         .footer-title {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
             font-weight: 600;
             position: relative;
             padding-bottom: 10px;
@@ -306,7 +393,7 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
+            width: 40px;
             height: 3px;
             background-color: var(--accent);
         }
@@ -316,13 +403,12 @@
         }
 
         .office-info h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 0.5rem;
             font-weight: 600;
         }
 
         .office-info p {
-            font-size: 1rem;
             color: rgba(255, 255, 255, 0.8);
         }
 
@@ -330,7 +416,7 @@
             display: block;
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            margin: 0.7rem 0;
+            margin: 0.6rem 0;
             transition: all 0.3s ease;
         }
 
@@ -340,38 +426,35 @@
         }
 
         .contact-links i {
-            margin-right: 0.7rem;
+            margin-right: 0.6rem;
             color: var(--accent);
         }
 
         .footer-social {
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
         }
 
         .footer-social a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;
             width: 36px;
             height: 36px;
-            background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: var(--white);
+            text-align: center;
+            line-height: 36px;
             margin-right: 0.8rem;
             transition: all 0.3s ease;
         }
 
         .footer-social a:hover {
-            background-color: var(--white);
-            color: var(--navy-blue);
-            border-color: var(--white);
+            background-color: var(--accent);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
@@ -382,8 +465,8 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background-color: var(--navy-blue);
             color: var(--white);
             border-radius: 50%;
@@ -395,7 +478,6 @@
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 1000;
-            border: 2px solid var(--white);
         }
 
         .back-to-top.show {
@@ -405,22 +487,40 @@
 
         .back-to-top:hover {
             background-color: var(--accent);
-            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .founder-info h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .founder-info h2 {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
 
             .contact-info {
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .nav {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
             }
 
             .footer-container {
@@ -430,37 +530,65 @@
     </style>
 </head>
 <body>
-    <header>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="nav">
+        <a href="#hero" class="nav-item">
+            <i class="fas fa-home"></i>
+        </a>
+        <a href="#services" class="nav-item">
+            <i class="fas fa-briefcase"></i>
+        </a>
+        <a href="#achievements" class="nav-item">
+            <i class="fas fa-award"></i>
+        </a>
+        <a href="#contact" class="nav-item">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
         <div class="container">
-            <div class="header-content">
-                <div class="founder-info">
-                    <h1>NAT ABOAGYE AMPONSAH</h1>
-                    <h2>FOUNDER/C.E.O</h2>
+            <div class="founder-info">
+                <h1>NAT ABOAGYE AMPONSAH</h1>
+                <h2>FOUNDER/C.E.O</h2>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>NAT@ELDERBA.TRAVEL</span>
                 </div>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>NAT@ELDERBA.TRAVEL</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+233 50 373 3969</span>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+233 50 373 3969</span>
                 </div>
             </div>
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <a href="#services" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
         </div>
-    </header>
+    </section>
 
-    <main>
+    <!-- Services & Impact Section -->
+    <section class="services-impact" id="services">
         <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+            </div>
             <div class="cards-container">
                 <div class="card services">
+                    <div class="card-badge">Popular</div>
                     <div class="card-header">
                         <div class="logo-container">
                             <div class="logo">
@@ -484,12 +612,13 @@
                             <li>Travel Consultation</li>
                             <li>International Tour Packages</li>
                         </ul>
-                        <a href="http://www.elderba.travel" class="website-link">
+                        <a href="http://www.elderba.travel" class="website-link" target="_blank">
                             <i class="fas fa-globe"></i>www.elderba.travel
                         </a>
                     </div>
                 </div>
                 <div class="card impact">
+                    <div class="card-badge">Featured</div>
                     <div class="card-header">
                         <div class="logo-container">
                             <div class="logo">
@@ -513,16 +642,56 @@
                             <li>Health & Social Welfare Projects</li>
                             <li>Youth Empowerment Programs</li>
                         </ul>
-                        <a href="http://www.elderbafoundation.org" class="website-link">
+                        <a href="http://www.elderbafoundation.org" class="website-link" target="_blank">
                             <i class="fas fa-heart"></i>www.elderbafoundation.org
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer>
+    <!-- Achievements Section -->
+    <section class="achievements" id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Achievements</h2>
+            </div>
+            <div class="achievements-container">
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <div class="achievement-number" data-target="5000">0</div>
+                    <div class="achievement-title">Flights Booked</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <div class="achievement-number" data-target="1500">0</div>
+                    <div class="achievement-title">Visa Approvals</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="achievement-number" data-target="3000">0</div>
+                    <div class="achievement-title">Happy Clients</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="achievement-number" data-target="25">0</div>
+                    <div class="achievement-title">Community Projects</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Contact -->
+    <footer id="contact">
         <div class="container">
             <div class="footer-container">
                 <div class="footer-section">
@@ -568,10 +737,17 @@
     </div>
 
     <script>
-        // Back to top button functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const backToTopButton = document.querySelector('.back-to-top');
+            // Progress bar
+            window.addEventListener('scroll', function() {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('progress-bar').style.width = scrolled + '%';
+            });
             
+            // Back to top button
+            const backToTopButton = document.querySelector('.back-to-top');
             window.addEventListener('scroll', function() {
                 if (window.pageYOffset > 300) {
                     backToTopButton.classList.add('show');
@@ -587,14 +763,7 @@
                 });
             });
 
-            // Make links open in new tab
-            const links = document.querySelectorAll('.website-link');
-            links.forEach(link => {
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            });
-
-            // Add smooth scrolling for all anchors
+            // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -607,23 +776,37 @@
                 });
             });
 
-            // Add animation to cards on scroll
-            const cards = document.querySelectorAll('.card');
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
+            // Number counter animation
+            const counters = document.querySelectorAll('.achievement-number');
+            const speed = 200;  // Lower is faster
+
+            function animateCounter() {
+                counters.forEach(counter => {
+                    const target = +counter.dataset.target;
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(animateCounter, 1);
+                    } else {
+                        counter.innerText = target;
                     }
                 });
-            }, { threshold: 0.1 });
+            }
 
-            cards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(card);
-            });
+            // Start counter animation when scrolled into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const achievementsSection = document.querySelector('.achievements');
+            observer.observe(achievementsSection);
         });
     </script>
 </body>
