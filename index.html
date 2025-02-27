@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElderBa - Global Travels & Foundation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Colors from the business card */
+        :root {
+            --navy-blue: #0e1351;
+            --white: #ffffff;
+            --black: #000000;
+            --accent: #0e1351;
+            --light-gray: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        header {
+            background: var(--navy-blue);
+            color: var(--white);
+            padding: 3rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .founder-info {
+            margin-bottom: 2rem;
+        }
+
+        .founder-info h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .founder-info h2 {
+            font-size: 1.8rem;
+            margin-top: 1rem;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--white);
+            color: var(--navy-blue);
+            border-color: var(--white);
+        }
+
+        /* Main content styles */
+        main {
+            padding: 4rem 0;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card-header {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .services .card-header {
+            background-color: var(--white);
+            color: var(--navy-blue);
+            border-bottom: 3px solid var(--navy-blue);
+        }
+
+        .impact .card-header {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            border-bottom: 3px solid var(--white);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .services .card-body {
+            background-color: var(--white);
+            color: #333;
+        }
+
+        .impact .card-body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .card h2:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: currentColor;
+            margin: 10px auto 0;
+        }
+
+        .card-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .card-list li {
+            margin: 1.2rem 0;
+            position: relative;
+            padding-left: 1.8rem;
+            font-size: 1.1rem;
+        }
+
+        .card-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .website-link {
+            display: block;
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--navy-blue);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            background-color: transparent;
+            border: 2px solid var(--navy-blue);
+        }
+
+        .impact .website-link {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            border-color: var(--navy-blue);
+        }
+
+        .website-link:hover {
+            background-color: var(--navy-blue);
+            color: var(--white);
+        }
+        
+        .impact .website-link:hover {
+            background-color: transparent;
+            color: var(--navy-blue);
+            border-color: var(--navy-blue);
+        }
+
+        .website-link i {
+            margin-right: 0.5rem;
+        }
+
+        /* Logo styling */
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            margin: 0 1rem;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text {
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* Footer styles */
+        footer {
+            background: var(--navy-blue);
+            color: var(--white);
+            padding: 3rem 0;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .office-info {
+            margin-bottom: 1rem;
+        }
+
+        .office-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .office-info p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-links a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin: 0.7rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .contact-links i {
+            margin-right: 0.7rem;
+            color: var(--accent);
+        }
+
+        .footer-social {
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: var(--white);
+            margin-right: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--white);
+            color: var(--navy-blue);
+            border-color: var(--white);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--navy-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 2px solid var(--white);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .founder-info h1 {
+                font-size: 2rem;
+            }
+
+            .founder-info h2 {
+                font-size: 1.4rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="founder-info">
+                    <h1>NAT ABOAGYE AMPONSAH</h1>
+                    <h2>FOUNDER/C.E.O</h2>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>NAT@ELDERBA.TRAVEL</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+233 50 373 3969</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="cards-container">
+                <div class="card services">
+                    <div class="card-header">
+                        <div class="logo-container">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                    <g fill="#0e1351">
+                                        <path d="M50,10 C30,10 15,25 15,45 C15,65 30,80 50,80 C70,80 85,65 85,45 C85,25 70,10 50,10 Z M50,75 C33,75 20,62 20,45 C20,28 33,15 50,15 C67,15 80,28 80,45 C80,62 67,75 50,75 Z"/>
+                                        <path d="M50,25 C45,25 40,30 40,35 C40,40 45,45 50,45 C55,45 60,40 60,35 C60,30 55,25 50,25 Z M50,40 C48,40 45,38 45,35 C45,32 48,30 50,30 C52,30 55,32 55,35 C55,38 52,40 50,40 Z"/>
+                                        <path d="M50,45 L50,65 M45,50 L55,50 M45,60 L55,60"/>
+                                        <path d="M30,35 C25,38 20,45 20,50 C20,55 25,60 30,60 M70,35 C75,38 80,45 80,50 C80,55 75,60 70,60"/>
+                                    </g>
+                                </svg>
+                                <div class="logo-text">ELDER-BA<br>GLOBAL TRAVELS</div>
+                            </div>
+                        </div>
+                        <h2>Services</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="card-list">
+                            <li>Local/Domestic flight booking:<br>[Passion Air, African World Airlines]</li>
+                            <li>Visa Assistance<br>[Tourist, Student, Work visa]</li>
+                            <li>Travel Consultation</li>
+                            <li>International Tour Packages</li>
+                        </ul>
+                        <a href="http://www.elderba.travel" class="website-link">
+                            <i class="fas fa-globe"></i>www.elderba.travel
+                        </a>
+                    </div>
+                </div>
+                <div class="card impact">
+                    <div class="card-header">
+                        <div class="logo-container">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                    <g fill="#ffffff">
+                                        <path d="M50,10 C30,10 15,25 15,45 C15,65 30,80 50,80 C70,80 85,65 85,45 C85,25 70,10 50,10 Z M50,75 C33,75 20,62 20,45 C20,28 33,15 50,15 C67,15 80,28 80,45 C80,62 67,75 50,75 Z"/>
+                                        <path d="M50,25 C45,25 40,30 40,35 C40,40 45,45 50,45 C55,45 60,40 60,35 C60,30 55,25 50,25 Z M50,40 C48,40 45,38 45,35 C45,32 48,30 50,30 C52,30 55,32 55,35 C55,38 52,40 50,40 Z"/>
+                                        <path d="M50,45 L50,65 M45,50 L55,50 M45,60 L55,60"/>
+                                        <path d="M30,35 C25,38 20,45 20,50 C20,55 25,60 30,60 M70,35 C75,38 80,45 80,50 C80,55 75,60 70,60"/>
+                                    </g>
+                                </svg>
+                                <div class="logo-text">ELDER-BA<br>FOUNDATION</div>
+                            </div>
+                        </div>
+                        <h2>Our Impact</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="card-list">
+                            <li>Community Development Initiatives</li>
+                            <li>Educational Support Programs</li>
+                            <li>Health & Social Welfare Projects</li>
+                            <li>Youth Empowerment Programs</li>
+                        </ul>
+                        <a href="http://www.elderbafoundation.org" class="website-link">
+                            <i class="fas fa-heart"></i>www.elderbafoundation.org
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h2 class="footer-title">About Us</h2>
+                    <p>ElderBa is a leading travel agency and foundation committed to providing quality services and making a positive impact in communities across Ghana.</p>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h2 class="footer-title">Our Locations</h2>
+                    <div class="office-info">
+                        <h3><i class="fas fa-map-marker-alt"></i> Head Office</h3>
+                        <p>Pokuase Anyaa Curve, Accra</p>
+                    </div>
+                    <div class="office-info">
+                        <h3><i class="fas fa-map-marker-alt"></i> Branch Office</h3>
+                        <p>Sunyani</p>
+                        <p>+233 53 604 2244</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h2 class="footer-title">Contact Us</h2>
+                    <div class="contact-links">
+                        <a href="mailto:nat@elderba.travel"><i class="fas fa-envelope"></i> nat@elderba.travel</a>
+                        <a href="tel:+233503733969"><i class="fas fa-phone"></i> +233 50 373 3969</a>
+                        <a href="tel:+233536042244"><i class="fas fa-phone"></i> +233 53 604 2244</a>
+                        <a href="http://www.elderba.travel"><i class="fas fa-globe"></i> www.elderba.travel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 ElderBa Global Travels & Foundation. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Back to top button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Make links open in new tab
+            const links = document.querySelectorAll('.website-link');
+            links.forEach(link => {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            });
+
+            // Add smooth scrolling for all anchors
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        document.querySelector(targetId).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add animation to cards on scroll
+            const cards = document.querySelectorAll('.card');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
